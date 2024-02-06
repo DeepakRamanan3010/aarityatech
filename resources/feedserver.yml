@@ -1,0 +1,30 @@
+addr: ":8080"
+ant_pool_size: 10000
+read_buf_size: 2048
+max_write_buf_size: 8192
+
+validate_request: false
+auth_public_key_id: "123"
+auth_public_key: ""
+
+telemetry:
+  debug_addr: ":8098"
+  block_profile_rate: 0
+  mutex_profile_rate: 0
+  enable_open_telemetry: false
+  publish_runtime: false
+  publish_host: false
+  otel_collector_addr: "localhost:4317"
+  metric_read_interval: 1s
+  trace_sample_fraction: 0.1
+
+grpc_receiver:
+  addrs:
+    - "localhost:8081"
+  service_config: "{}"
+  min_interval: 1s
+
+instrument_lut:
+  interval: 1h
+  bucket: aaritya-dev-public-bucket
+  metadata_file_key: search/metadata.json

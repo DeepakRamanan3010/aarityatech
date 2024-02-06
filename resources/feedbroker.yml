@@ -1,0 +1,38 @@
+# gRPC server address.
+addr: ":8081"
+
+# Minimum interval between two updates for the same instrument.
+flush_interval: 1s
+
+telemetry:
+  debug_addr: ":8099"
+  block_profile_rate: 0
+  mutex_profile_rate: 0
+  enable_open_telemetry: false
+  publish_runtime: false
+  publish_host: false
+  otel_collector_addr: "localhost:4317"
+  metric_read_interval: 1s
+  trace_sample_fraction: 0.1
+
+receiver:
+  addr: "localhost:6660"
+  use_nbio: true
+  min_packet_size: 36
+  max_packet_size: 1024
+  read_batch_size: 1024
+  read_timeout: 1s
+  cache:
+    enable: false
+    path: ./cache
+    flush_interval: 1s
+
+processor:
+  derived_future: false
+
+# Instrument lookup-table used for pre-compute, packet parsing,
+# and instrument metadata.
+instrument_lut:
+  interval: 1h
+  bucket: aaritya-dev-public-bucket
+  metadata_file_key: search/metadata.json
